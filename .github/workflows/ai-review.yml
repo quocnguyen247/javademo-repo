@@ -9,14 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: ChatGPT Review
-        uses: kxxt/chatgpt-code-review@v1
+      - name: AI Code Review
+        uses: kxxt/chatgpt-code-review@main
         with:
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          prompt: |
-            Review this code for:
-            - Security vulnerabilities
-            - Performance issues
-            - Code style violations
-            - Logic errors
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          language: javascript
+          model: gpt-3.5-turbo
