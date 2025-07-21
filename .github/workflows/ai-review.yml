@@ -1,0 +1,22 @@
+name: AI Code Review
+
+on:
+  pull_request:
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: AI Code Review
+        uses: openai/chatgpt-action@v1
+        with:
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Review this code for:
+            - Security vulnerabilities
+            - Performance issues
+            - Code style violations
+            - Logic errors
