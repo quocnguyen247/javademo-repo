@@ -14,14 +14,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: AI Code Review
-        uses: anc95/ChatGPT-CodeReview@main
+        uses: cirolini/genai-code-review@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          LANGUAGE: English
-          OPENAI_API_ENDPOINT: https://api.openai.com/v1
-          MODEL: gpt-3.5-turbo
-          top_p: 1
-          temperature: 0.7
-          max_tokens: 2048
-          MAX_PATCH_LENGTH: 8000
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
+          openai_model: "gpt-3.5-turbo" # optional
+          openai_temperature: 0.5 # optional
+          openai_max_tokens: 2048 # optional
+          mode: files # files or patch
+          language: en # optional, default is 'en'
+          custom_prompt: "" # optional
